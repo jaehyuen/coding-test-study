@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class SolutionTest {
 
+	
 	@Test
 	void case1() {
 		String[] participant = { "leo", "kiki", "eden" };
