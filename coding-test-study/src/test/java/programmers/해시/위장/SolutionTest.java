@@ -21,7 +21,7 @@ class SolutionTest {
 
 		Solution   solution = new Solution();
 
-		assertEquals(5, solution.solution(clothes));
+		assertEquals(3, solution.solution(clothes));
 	}
 
 }
