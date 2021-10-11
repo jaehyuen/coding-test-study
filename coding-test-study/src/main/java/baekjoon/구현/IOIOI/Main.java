@@ -1,33 +1,26 @@
 package baekjoon.±¸Çö.IOIOI;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		Scanner sc = new Scanner(System.in);
-
-		int N = Integer.parseInt(sc.nextLine());
-		int M = Integer.parseInt(sc.nextLine());
-
-		StringBuilder sb = new StringBuilder();
-
-		String str1 = sc.nextLine();
-
-		for (int i = 0; i < N; i++) {
-			sb.append("IO");
-		}
-		
-		sb.append("I");
-		String str2 = sb.toString();
-
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		int M = Integer.parseInt(br.readLine());
+		char[] s = br.readLine().toCharArray();
+		int[] dp = new int[M];
 		int result = 0;
-		for (int i = 0; i <= M - str2.length(); i++) {
 
-			if (str1.substring(i, i + (str2.length())).equals(str2)) {
-				result++;
+		for (int i = 1; i < M - 1; i++) {
+			if (s[i] == 'O' && s[i + 1] == 'I') {
+				dp[i + 1] = dp[i - 1] + 1;
+
+				if (dp[i + 1] >= N && s[i - 2 * N + 1] == 'I')
+					result++;
 			}
 		}
 		System.out.println(result);
