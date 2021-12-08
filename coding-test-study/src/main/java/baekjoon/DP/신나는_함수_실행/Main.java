@@ -22,13 +22,13 @@ public class Main {
 				break;
 			}
 
-			System.out.println("w(" + a + ", " + b + ", " + c + ") = " + dfs(a, b, c));
+			System.out.println("w(" + a + ", " + b + ", " + c + ") = " + recursive(a, b, c));
 
 		}
 
 	}
 
-	public static int dfs(int a, int b, int c) {
+	public static int recursive(int a, int b, int c) {
 
 		if (dp[a + 50][b + 50][c + 50] != 0) {
 
@@ -43,18 +43,18 @@ public class Main {
 
 			} else if (a > 20 || b > 20 || c > 20) {
 
-				dp[a + 50][b + 50][c + 50] = dfs(20, 20, 20);
+				dp[a + 50][b + 50][c + 50] = recursive(20, 20, 20);
 				return dp[a + 50][b + 50][c + 50];
 
 			} else if (a < b && b < c) {
 
-				dp[a + 50][b + 50][c + 50] = dfs(a, b, c - 1) + dfs(a, b - 1, c - 1) - dfs(a, b - 1, c);
+				dp[a + 50][b + 50][c + 50] = recursive(a, b, c - 1) + recursive(a, b - 1, c - 1) - recursive(a, b - 1, c);
 				return dp[a + 50][b + 50][c + 50];
 
 			} else {
 
-				dp[a + 50][b + 50][c + 50] = dfs(a - 1, b, c) + dfs(a - 1, b - 1, c) + dfs(a - 1, b, c - 1)
-						- dfs(a - 1, b - 1, c - 1);
+				dp[a + 50][b + 50][c + 50] = recursive(a - 1, b, c) + recursive(a - 1, b - 1, c) + recursive(a - 1, b, c - 1)
+						- recursive(a - 1, b - 1, c - 1);
 				return dp[a + 50][b + 50][c + 50];
 
 			}
