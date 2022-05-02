@@ -54,8 +54,9 @@ public class Main {
 		int tmp = arr[i - 1];
 		arr[i - 1] = arr[j];
 		arr[j] = tmp;
-		
-		// a 부터 끝까지 정렬
+		N--;
+
+		// i 부터 끝까지 정렬
 		while (i < N) {
 			tmp = arr[i];
 			arr[i] = arr[N];
