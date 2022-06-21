@@ -43,8 +43,6 @@ public class Main {
 			}
 
 		}
-//		System.out.println(list);
-//		System.out.println(Arrays.toString(v));
 
 		Queue<Integer> q = new LinkedList<>();
 
@@ -53,15 +51,18 @@ public class Main {
 				q.add(i);
 			}
 		}
+
+		// 결과를 저장할 배열
 		int[] result = new int[N + 1];
+
+		// 위상 정렬 시작
 		while (!q.isEmpty()) {
 			int now = q.poll();
-
-			// r결과 저장
 
 			for (int next : list.get(now)) {
 				v[next]--;
 
+				// 본인 건물 시작전에 최소한 기다려야하는 시간 계산
 				result[next] = Math.max(result[next], result[now] + tArr[now]);
 				if (v[next] == 0) {
 					q.add(next);
@@ -71,6 +72,7 @@ public class Main {
 		}
 
 		for (int i = 1; i <= N; i++) {
+			// 계산된 시간과 본인 시간을 더함
 			System.out.println(result[i] + tArr[i]);
 		}
 
